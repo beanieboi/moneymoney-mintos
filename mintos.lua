@@ -48,9 +48,14 @@ function RefreshAccount (account, since)
   total = string.gsub(total, "€", "")
   total = string.gsub(total, " ", "")
 
+  invested = content:xpath('//*[@id="mintos-boxes"]/li[1]/div/table/tbody/tr[2]/td[2]'):text()
+  invested = string.gsub(invested, "€", "")
+  invested = string.gsub(invested, "0", "")
+
   local security = {
     name = "Account Summary",
     price = tonumber(total),
+    purchasePrice = tonumber(invested),
     quantity = 1,
     curreny = nil,
   }
