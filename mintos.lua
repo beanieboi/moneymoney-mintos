@@ -17,7 +17,7 @@ end
 function InitializeSession (protocol, bankCode, username, username2, password, username3)
   connection = Connection()
   local html = HTML(connection:get("https://www.mintos.com/en/login"))
-  local csrfToken = html:xpath("//*[@id='login-form']/input[@name='_csrf_token']"):val()
+  local csrfToken = html:xpath("//login-form"):attr("token")
 
   content, charset, mimeType = connection:request("POST",
   "https://www.mintos.com/en/login/check",
